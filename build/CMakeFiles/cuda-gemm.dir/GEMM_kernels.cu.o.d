@@ -187,4 +187,5 @@ CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o : /home/mrgrinch/coding/GEMM-CUDA/GEM
     /usr/local/cuda-12.9/bin/../targets/x86_64-linux/include/device_launch_parameters.h \
     /usr/include/c++/14/utility \
     /usr/include/c++/14/bits/stl_relops.h \
-    /usr/include/c++/14/initializer_list
+    /usr/include/c++/14/initializer_list \
+    /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh

@@ -189,6 +189,7 @@ CMakeFiles/cuda-gemm.dir/main.cu.o : /home/mrgrinch/coding/GEMM-CUDA/main.cu \
     /usr/include/c++/14/bits/stl_relops.h \
     /usr/include/c++/14/initializer_list \
     /home/mrgrinch/coding/GEMM-CUDA/GEMM.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/utils.cuh \
     /usr/include/c++/14/iostream \
     /usr/include/c++/14/ostream \
     /usr/include/c++/14/ios \
