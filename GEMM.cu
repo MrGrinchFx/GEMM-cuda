@@ -1,6 +1,6 @@
 #include "GEMM.cuh"
+#include "GEMM_kernels.cuh"
 #include <iostream>
-
 void GEMM::run_tests(int kernel) {
   switch (kernel) {
 
@@ -31,8 +31,16 @@ void GEMM::run_tests(int kernel) {
   }
 }
 
-void GEMM::eq_check(const float *truth, const float *test) {
-  // TODO
+void GEMM::eq_check(const float *truth, const float *test, int row, int col) {
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if (truth[row * i + j] != test[row * i + j]) {
+        printf("THEY DO NOT MATCH\n");
+      }
+    }
+  }
+
+  printf("YAYYY\n");
 }
 
 void GEMM::naive_kernel() {

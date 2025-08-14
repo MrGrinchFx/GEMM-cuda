@@ -490,6 +490,7 @@ CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o: /home/mrgrinch/coding/GEMM-CUDA/GEMM
   /usr/local/cuda-12.9/targets/x86_64-linux/include/vector_types.h
 
 CMakeFiles/cuda-gemm.dir/main.cu.o: /home/mrgrinch/coding/GEMM-CUDA/main.cu \
+  /home/mrgrinch/coding/GEMM-CUDA/GEMM.cuh \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
