@@ -1,3 +1,4 @@
 build/C_matrix.txt
 build/B_matrix.txt
 build/A_matrix.txt
+build/*.ncu-rep

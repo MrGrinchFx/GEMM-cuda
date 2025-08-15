@@ -18,7 +18,9 @@ void GEMM::run_tests() {
                this->block_size);
   // print_matrix(this->c, this->M, this->N);
   eq_check(this->c, this->ref, this->M, this->N);
-  // mem_coalesce_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
+  mem_coalesce_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
+                      this->block_size);
+  eq_check(this->c, this->ref, this->M, this->N);
   //                     this->block_size);
   // shared_mem_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
   //                   this->block_size);
@@ -105,9 +107,10 @@ void GEMM::mem_coalesce_kernel(const float *a, const float *b, float *c, int M,
   CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
-
-  int grid_size = (M * N + block_size - 1) / block_size;
-  memCoalesce<<<grid_size, block_size>>>(d_a, d_b, d_c, M, N, K);
+  dim3 block_dim{32, 32, 1};
+  dim3 grid_dim{(M + block_dim.x - 1) / block_dim.x,
+                (N + block_dim.y - 1) / block_dim.y, 1};
+  memCoalesce<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
   CUDA_CHECK(cudaGetLastError());
 
   CUDA_CHECK(cudaFree(d_a));
