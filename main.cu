@@ -48,9 +48,6 @@ void read_file(float *matrix, int rows, int cols, std::string file_name) {
 
 void initialize_matrices(int M, int K, int N, float *&h_A, float *&h_B,
                          float *&h_C) {
-  h_A = new float[M * K];
-  h_B = new float[K * N];
-  h_C = new float[M * N];
 
   for (int i = 0; i < (M * K); ++i) {
     h_A[i] = static_cast<float>(i % 100) * 0.1f;
@@ -93,14 +90,15 @@ int main() {
   h_A = new float[M * K];
   h_B = new float[K * N];
   h_C = new float[M * N];
-  // ONLY DO THIS ON FIRST RUN
-  //  initialize_matrices(M, K, N, h_A, h_B, h_C);
-  //  write_matrix(h_A, M, K,"A_matrix.txt");
-  //  write_matrix(h_B, K, N, "B_matrix.txt");
-  //  gemm_cpu_reference(M, K, N, h_A, h_B, output_ref);
-  //  write_matrix(output_ref, M, N, "C_matrix.txt");
-
   float *output_ref = new float[M * N];
+
+  // ONLY DO THIS ON FIRST RUN
+  initialize_matrices(M, K, N, h_A, h_B, h_C);
+  write_matrix(h_A, M, K, "A_matrix.txt");
+  write_matrix(h_B, K, N, "B_matrix.txt");
+  gemm_cpu_reference(M, K, N, h_A, h_B, output_ref);
+  write_matrix(output_ref, M, N, "C_matrix.txt");
+
   read_file(h_A, M, K, "A_matrix.txt");
   read_file(h_B, K, N, "B_matrix.txt");
   read_file(output_ref, M, N, "C_matrix.txt");

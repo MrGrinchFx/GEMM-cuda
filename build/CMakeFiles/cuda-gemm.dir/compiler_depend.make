@@ -602,6 +602,7 @@ CMakeFiles/cuda-gemm.dir/main.cu.o: /home/mrgrinch/coding/GEMM-CUDA/main.cu \
   /usr/include/c++/14/bits/basic_string.tcc \
   /usr/include/c++/14/bits/char_traits.h \
   /usr/include/c++/14/bits/charconv.h \
+  /usr/include/c++/14/bits/codecvt.h \
   /usr/include/c++/14/bits/concept_check.h \
   /usr/include/c++/14/bits/cpp_type_traits.h \
   /usr/include/c++/14/bits/cxxabi_forced.h \
@@ -609,6 +610,7 @@ CMakeFiles/cuda-gemm.dir/main.cu.o: /home/mrgrinch/coding/GEMM-CUDA/main.cu \
   /usr/include/c++/14/bits/exception.h \
   /usr/include/c++/14/bits/exception_defines.h \
   /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/fstream.tcc \
   /usr/include/c++/14/bits/functexcept.h \
   /usr/include/c++/14/bits/functional_hash.h \
   /usr/include/c++/14/bits/hash_bytes.h \
@@ -669,6 +671,8 @@ CMakeFiles/cuda-gemm.dir/main.cu.o: /home/mrgrinch/coding/GEMM-CUDA/main.cu \
   /usr/include/c++/14/ext/numeric_traits.h \
   /usr/include/c++/14/ext/string_conversions.h \
   /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/format \
+  /usr/include/c++/14/fstream \
   /usr/include/c++/14/initializer_list \
   /usr/include/c++/14/ios \
   /usr/include/c++/14/iosfwd \
@@ -702,8 +706,10 @@ CMakeFiles/cuda-gemm.dir/main.cu.o: /home/mrgrinch/coding/GEMM-CUDA/main.cu \
   /usr/include/c++/14/typeinfo \
   /usr/include/c++/14/utility \
   /usr/include/c++/14/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/c++locale.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/cpu_defines.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/ctype_base.h \
@@ -714,6 +720,7 @@ CMakeFiles/cuda-gemm.dir/main.cu.o: /home/mrgrinch/coding/GEMM-CUDA/main.cu \
   /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/err.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
@@ -832,8 +839,6 @@ CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o:
 
 CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
-/usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudart_static.a:
-
 /usr/lib64/libc_nonshared.a:
 
 /usr/lib/gcc/x86_64-redhat-linux/14/libstdc++.so:
@@ -849,6 +854,14 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /lib64/libmvec.so.1:
 
 /lib64/libc.so.6:
+
+/usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudart_static.a:
+
+/usr/include/c++/14/bits/fstream.tcc:
+
+/usr/include/c++/14/bits/codecvt.h:
 
 /home/mrgrinch/coding/GEMM-CUDA/main.cu:
 
@@ -871,6 +884,8 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_35_atomic_functions.h:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_32_intrinsics.h:
+
+/usr/include/c++/14/fstream:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_32_atomic_functions.hpp:
 
@@ -1152,6 +1167,8 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/tr1/bessel_function.tcc:
 
+/usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h:
+
 /usr/include/stdc-predef.h:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/device_atomic_functions.hpp:
@@ -1159,6 +1176,8 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/bits/types/struct_FILE.h:
 
 /usr/include/asm/types.h:
+
+/usr/include/err.h:
 
 /usr/include/alloca.h:
 
@@ -1375,6 +1394,8 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/c++/14/cwctype:
 
 /usr/include/errno.h:
+
+/usr/include/c++/14/format:
 
 /usr/include/bits/types/wint_t.h:
 
