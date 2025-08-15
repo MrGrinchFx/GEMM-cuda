@@ -3,16 +3,16 @@
 #include <cuda_runtime.h>
 void __global__ naiveKernel(const float *a, const float *b, float *c, int M,
                             int N, int K) {
-  int idx = blockDim.x * blockIdx.x + threadIdx.x;
-  int row = idx / N;
-  int col = idx % N;
+  int cRow = blockDim.x * blockIdx.x + threadIdx.x;
+  int cCol = blockDim.y * blockIdx.y + threadIdx.y;
+
   float result = 0.0f;
-  if (idx < (M * N)) {
+  if (cRow < M && cCol < N) {
     for (int i = 0; i < K; i++) {
-      result += a[row * K + i] * b[N * i + col];
+      result += a[cRow * K + i] * b[N * i + cCol];
     }
 
-    c[row * N + col] = result;
+    c[cRow * N + cCol] = result;
   }
 }
 

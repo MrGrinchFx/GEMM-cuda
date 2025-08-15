@@ -1,7 +1,7 @@
 #include "GEMM.cuh"
 #include "GEMM_kernels.cuh"
 #include "utils.cuh"
-
+#include <chrono>
 GEMM::~GEMM() {}
 
 void GEMM::print_matrix(const float *matrix, int row, int col) {
@@ -51,10 +51,17 @@ void GEMM::naive_kernel(const float *a, const float *b, float *c, int M, int N,
   CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
-  int grid_size = (M * N + block_size - 1) / block_size;
+  dim3 block_dim{32, 32, 1};
+  dim3 grid_dim{(M + block_dim.x - 1) / block_dim.x,
+                (N + block_dim.y - 1) / block_dim.y, 1};
   // each thread will be responsible for a single output cell
-  naiveKernel<<<grid_size, block_size>>>(d_a, d_b, d_c, M, N, K);
+  auto start = std::chrono::high_resolution_clock::now();
+  naiveKernel<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
   CUDA_CHECK(cudaGetLastError());
+  auto end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end - start;
+  std::cout << "Naive Kernel finished with a latency of: " << duration.count()
+            << " seconds!" << std::endl;
 
   CUDA_CHECK(cudaMemcpy(c, d_c, sizeof(float) * M * N, cudaMemcpyDeviceToHost));
 
@@ -65,7 +72,23 @@ void GEMM::naive_kernel(const float *a, const float *b, float *c, int M, int N,
 
 void GEMM::mem_coalesce_kernel(const float *a, const float *b, float *c, int M,
                                int N, int K, int block_size) {
-  // TODO
+  float *d_a, *d_b, *d_c;
+
+  CUDA_CHECK(cudaMalloc(&d_a, sizeof(float) * M * K));
+  CUDA_CHECK(cudaMalloc(&d_b, sizeof(float) * N * K));
+  CUDA_CHECK(cudaMalloc(&d_c, sizeof(float) * M * N));
+
+  CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
+
+  int grid_size = (M * N + block_size - 1) / block_size;
+  memCoalesce<<<grid_size, block_size>>>(d_a, d_b, d_c, M, N, K);
+  CUDA_CHECK(cudaGetLastError());
+
+  CUDA_CHECK(cudaFree(d_a));
+  CUDA_CHECK(cudaFree(d_b));
+  CUDA_CHECK(cudaFree(d_c));
 }
 
 void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,

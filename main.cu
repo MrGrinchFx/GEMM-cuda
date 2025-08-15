@@ -42,9 +42,9 @@ void gemm_cpu_reference(int M, int K, int N, const float *h_A, const float *h_B,
 }
 
 int main() {
-  const int M = 256;
-  const int K = 512;
-  const int N = 128;
+  const int M = 1024;
+  const int K = 2048;
+  const int N = 512;
 
   float *h_A, *h_B, *h_C;
 
