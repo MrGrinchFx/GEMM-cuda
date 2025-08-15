@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "cuda-gemm",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -41,6 +43,13 @@
 					"id" : "cuda-gemm::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-cuda-gemm-d4afcf971d2562f145e4.json",
 					"name" : "cuda-gemm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "matrix_generator::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-matrix_generator-769f47dac2ccf3511b43.json",
+					"name" : "matrix_generator",
 					"projectIndex" : 0
 				}
 			]

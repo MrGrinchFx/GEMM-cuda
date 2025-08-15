@@ -56,4 +56,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cuda-gemm.dir/DependInfo.cmake"
+  "CMakeFiles/matrix_generator.dir/DependInfo.cmake"
   )

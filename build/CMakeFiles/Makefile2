@@ -64,10 +64,12 @@ CMAKE_BINARY_DIR = /home/mrgrinch/coding/GEMM-CUDA/build
 
 # The main recursive "all" target.
 all: CMakeFiles/cuda-gemm.dir/all
+all: CMakeFiles/matrix_generator.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/cuda-gemm.dir/codegen
+codegen: CMakeFiles/matrix_generator.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -76,6 +78,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/cuda-gemm.dir/clean
+clean: CMakeFiles/matrix_generator.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -109,6 +112,38 @@ CMakeFiles/cuda-gemm.dir/codegen:
 CMakeFiles/cuda-gemm.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/clean
 .PHONY : CMakeFiles/cuda-gemm.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/matrix_generator.dir
+
+# All Build rule for target.
+CMakeFiles/matrix_generator.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mrgrinch/coding/GEMM-CUDA/build/CMakeFiles --progress-num=5,6 "Built target matrix_generator"
+.PHONY : CMakeFiles/matrix_generator.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/matrix_generator.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mrgrinch/coding/GEMM-CUDA/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/matrix_generator.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mrgrinch/coding/GEMM-CUDA/build/CMakeFiles 0
+.PHONY : CMakeFiles/matrix_generator.dir/rule
+
+# Convenience name for target.
+matrix_generator: CMakeFiles/matrix_generator.dir/rule
+.PHONY : matrix_generator
+
+# codegen rule for target.
+CMakeFiles/matrix_generator.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mrgrinch/coding/GEMM-CUDA/build/CMakeFiles --progress-num=5,6 "Finished codegen for target matrix_generator"
+.PHONY : CMakeFiles/matrix_generator.dir/codegen
+
+# clean rule for target.
+CMakeFiles/matrix_generator.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/clean
+.PHONY : CMakeFiles/matrix_generator.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

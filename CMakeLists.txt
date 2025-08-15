@@ -22,4 +22,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${COMMON_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_LIBRARIES})
 set(CUDA_ARCH_CODE "86")
 
+add_executable(matrix_generator matrix_generator.cu)
+
 set_property(TARGET ${PROJECT_NAME} cuda-gemm PROPERTY CUDA_ARCHITECTURES ${CUDA_ARCH_CODE})
+set_property(TARGET matrix_generator cuda-gemm PROPERTY CUDA_ARCHITECTURES ${CUDA_ARCH_CODE})

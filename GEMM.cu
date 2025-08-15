@@ -106,8 +106,8 @@ void GEMM::mem_coalesce_kernel(const float *a, const float *b, float *c, int M,
   CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
 
-  // int grid_size = (M * N + block_size - 1) / block_size;
-  //  memCoalesce<<<grid_size, block_size>>>(d_a, d_b, d_c, M, N, K);
+  int grid_size = (M * N + block_size - 1) / block_size;
+  memCoalesce<<<grid_size, block_size>>>(d_a, d_b, d_c, M, N, K);
   CUDA_CHECK(cudaGetLastError());
 
   CUDA_CHECK(cudaFree(d_a));

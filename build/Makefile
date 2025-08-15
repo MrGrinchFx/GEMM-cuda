@@ -129,6 +129,19 @@ cuda-gemm/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/build
 .PHONY : cuda-gemm/fast
 
+#=============================================================================
+# Target rules for targets named matrix_generator
+
+# Build rule for target.
+matrix_generator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 matrix_generator
+.PHONY : matrix_generator
+
+# fast build rule for target.
+matrix_generator/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/build
+.PHONY : matrix_generator/fast
+
 GEMM.o: GEMM.cu.o
 .PHONY : GEMM.o
 
@@ -201,6 +214,30 @@ main.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/main.cu.s
 .PHONY : main.cu.s
 
+matrix_generator.o: matrix_generator.cu.o
+.PHONY : matrix_generator.o
+
+# target to build an object file
+matrix_generator.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/matrix_generator.cu.o
+.PHONY : matrix_generator.cu.o
+
+matrix_generator.i: matrix_generator.cu.i
+.PHONY : matrix_generator.i
+
+# target to preprocess a source file
+matrix_generator.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/matrix_generator.cu.i
+.PHONY : matrix_generator.cu.i
+
+matrix_generator.s: matrix_generator.cu.s
+.PHONY : matrix_generator.s
+
+# target to generate assembly for a file
+matrix_generator.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/matrix_generator.dir/build.make CMakeFiles/matrix_generator.dir/matrix_generator.cu.s
+.PHONY : matrix_generator.cu.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -210,6 +247,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cuda-gemm"
+	@echo "... matrix_generator"
 	@echo "... GEMM.o"
 	@echo "... GEMM.i"
 	@echo "... GEMM.s"
@@ -219,6 +257,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... matrix_generator.o"
+	@echo "... matrix_generator.i"
+	@echo "... matrix_generator.s"
 .PHONY : help
 
 

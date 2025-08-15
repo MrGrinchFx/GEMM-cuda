@@ -1,0 +1,1 @@
+/usr/bin/g++-14 -Wl,--dependency-file=CMakeFiles/matrix_generator.dir/link.d @CMakeFiles/matrix_generator.dir/objects1.rsp -o matrix_generator @CMakeFiles/matrix_generator.dir/linkLibs.rsp -L"/usr/local/cuda-12.9/targets/x86_64-linux/lib/stubs" -L"/usr/local/cuda-12.9/targets/x86_64-linux/lib"

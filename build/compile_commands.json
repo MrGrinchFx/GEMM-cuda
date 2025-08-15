@@ -16,5 +16,11 @@
   "command": "/usr/local/cuda-12.9/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-14   -std=c++17 \"--generate-code=arch=compute_86,code=[compute_86,sm_86]\" -x cu -c /home/mrgrinch/coding/GEMM-CUDA/main.cu -o CMakeFiles/cuda-gemm.dir/main.cu.o",
   "file": "/home/mrgrinch/coding/GEMM-CUDA/main.cu",
   "output": "CMakeFiles/cuda-gemm.dir/main.cu.o"
+},
+{
+  "directory": "/home/mrgrinch/coding/GEMM-CUDA/build",
+  "command": "/usr/local/cuda-12.9/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-14   -std=c++17 \"--generate-code=arch=compute_86,code=[compute_86,sm_86]\" -x cu -c /home/mrgrinch/coding/GEMM-CUDA/matrix_generator.cu -o CMakeFiles/matrix_generator.dir/matrix_generator.cu.o",
+  "file": "/home/mrgrinch/coding/GEMM-CUDA/matrix_generator.cu",
+  "output": "CMakeFiles/matrix_generator.dir/matrix_generator.cu.o"
 }
 ]
