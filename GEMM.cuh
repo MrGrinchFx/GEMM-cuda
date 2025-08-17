@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 class GEMM {
 public:
   // utility functions
@@ -7,7 +7,8 @@ public:
        int K, const int block_size)
       : a(a), b(b), c(c), M(M), N(N), K(K), block_size(block_size), ref(ref) {}
   ~GEMM();
-  void eq_check(const float *truth, const float *test, int row, int col);
+  void eq_check(const float *truth, const float *test, int row, int col,
+                std::string kernelName);
   void run_tests();
   void print_matrix(const float *matrix, int row, int col);
   // implementations prototypes
@@ -16,10 +17,10 @@ public:
                     int K, int block_size);
   // COALESCE
   void mem_coalesce_kernel(const float *a, const float *b, float *c, int M,
-                           int N, int K, int block_size);
+                           int N, int K);
   // SHARED_MEM
   void shared_mem_kernel(const float *a, const float *b, float *c, int M, int N,
-                         int K, int block_size);
+                         int K);
   // TILING
   void tiling_kernel(const float *a, const float *b, float *c, int M, int N,
                      int K, int block_size);

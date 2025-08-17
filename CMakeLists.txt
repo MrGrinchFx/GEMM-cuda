@@ -5,7 +5,7 @@ project(cuda-gemm LANGUAGES CXX CUDA)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_CXX_STANDARD 17) # Or 20, 23 etc., depending on your project's needs
+set(CMAKE_CXX_STANDARD 20) # Or 20, 23 etc., depending on your project's needs
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 

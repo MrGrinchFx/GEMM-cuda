@@ -114,11 +114,13 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o: /home/mrgrinch/coding/GEM
   /usr/include/c++/14/bits/invoke.h \
   /usr/include/c++/14/bits/ios_base.h \
   /usr/include/c++/14/bits/istream.tcc \
+  /usr/include/c++/14/bits/iterator_concepts.h \
   /usr/include/c++/14/bits/locale_classes.h \
   /usr/include/c++/14/bits/locale_classes.tcc \
   /usr/include/c++/14/bits/locale_facets.h \
   /usr/include/c++/14/bits/locale_facets.tcc \
   /usr/include/c++/14/bits/localefwd.h \
+  /usr/include/c++/14/bits/max_size_type.h \
   /usr/include/c++/14/bits/memory_resource.h \
   /usr/include/c++/14/bits/memoryfwd.h \
   /usr/include/c++/14/bits/move.h \
@@ -130,6 +132,9 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o: /home/mrgrinch/coding/GEM
   /usr/include/c++/14/bits/predefined_ops.h \
   /usr/include/c++/14/bits/ptr_traits.h \
   /usr/include/c++/14/bits/range_access.h \
+  /usr/include/c++/14/bits/ranges_base.h \
+  /usr/include/c++/14/bits/ranges_cmp.h \
+  /usr/include/c++/14/bits/ranges_util.h \
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
   /usr/include/c++/14/bits/specfun.h \
@@ -154,6 +159,7 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o: /home/mrgrinch/coding/GEM
   /usr/include/c++/14/cerrno \
   /usr/include/c++/14/clocale \
   /usr/include/c++/14/cmath \
+  /usr/include/c++/14/compare \
   /usr/include/c++/14/concepts \
   /usr/include/c++/14/cstddef \
   /usr/include/c++/14/cstdio \
@@ -177,6 +183,7 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o: /home/mrgrinch/coding/GEM
   /usr/include/c++/14/limits \
   /usr/include/c++/14/math.h \
   /usr/include/c++/14/new \
+  /usr/include/c++/14/numbers \
   /usr/include/c++/14/ostream \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/stdexcept \
@@ -400,8 +407,6 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_70_rt.hpp:
 
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_70_rt.h:
-
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_100_rt.hpp:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_100_rt.h:
@@ -409,6 +414,18 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/math_functions.hpp:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/math_functions.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.hpp:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/sm_20_intrinsics.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_double_functions.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/device_launch_parameters.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/cudacc_ext.h:
 
 /usr/include/c++/14/bits/memoryfwd.h:
 
@@ -432,13 +449,17 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/c++/14/bits/codecvt.h:
 
-/usr/include/c++/14/bits/basic_string.tcc:
-
 /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_61_intrinsics.h:
 
 /usr/include/c++/14/clocale:
 
-/usr/include/c++/14/ostream:
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_70_rt.h:
+
+/usr/include/c++/14/bits/iterator_concepts.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/channel_descriptor.h:
+
+/usr/include/c++/14/stdlib.h:
 
 /usr/include/bits/pthreadtypes.h:
 
@@ -457,8 +478,6 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 /usr/lib64/librt.a:
 
 /usr/include/c++/14/tr1/legendre_function.tcc:
-
-/usr/include/bits/wctype-wchar.h:
 
 /usr/include/sys/types.h:
 
@@ -499,6 +518,10 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 /usr/include/c++/14/exception:
 
 /usr/include/bits/types/mbstate_t.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_double_functions.hpp:
+
+/usr/include/bits/types/locale_t.h:
 
 /usr/include/c++/14/bits/ptr_traits.h:
 
@@ -568,11 +591,13 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/bits/struct_mutex.h:
 
-/usr/local/cuda-12.9/targets/x86_64-linux/include/channel_descriptor.h:
-
-/usr/include/c++/14/stdlib.h:
-
 /usr/include/bits/byteswap.h:
+
+/usr/include/c++/14/bits/max_size_type.h:
+
+/usr/include/c++/14/new:
+
+/usr/include/linux/stddef.h:
 
 /usr/include/asm-generic/errno.h:
 
@@ -611,8 +636,6 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h:
 
 /usr/include/stdc-predef.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.hpp:
 
 /usr/include/alloca.h:
 
@@ -658,13 +681,13 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/c++/14/x86_64-redhat-linux/bits/c++locale.h:
 
-/usr/include/bits/types/locale_t.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_double_functions.hpp:
-
 /usr/local/cuda-12.9/targets/x86_64-linux/include/device_atomic_functions.h:
 
 /usr/include/c++/14/bits/invoke.h:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/host_defines.h:
+
+/usr/include/bits/pthreadtypes-arch.h:
 
 /usr/include/c++/14/x86_64-redhat-linux/bits/atomic_word.h:
 
@@ -694,16 +717,6 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/bits/types/__fpos64_t.h:
 
-/usr/local/cuda-12.9/targets/x86_64-linux/include/vector_functions.hpp:
-
-/usr/include/c++/14/tr1/beta_function.tcc:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/bits/types/struct___jmp_buf_tag.h:
-
 /usr/include/bits/setjmp.h:
 
 /usr/include/bits/types/error_t.h:
@@ -726,11 +739,13 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/bits/mathcalls-helper-functions.h:
 
+/usr/include/c++/14/bits/basic_string.tcc:
+
+/usr/include/c++/14/bits/ranges_util.h:
+
 /usr/include/c++/14/bits/allocator.h:
 
 /usr/include/string.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.h:
 
 /usr/include/bits/thread-shared-types.h:
 
@@ -772,9 +787,25 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/bits/types/__FILE.h:
 
-/usr/include/c++/14/bits/streambuf_iterator.h:
+/usr/local/cuda-12.9/targets/x86_64-linux/include/vector_functions.hpp:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/c++/14/tr1/beta_function.tcc:
 
 /usr/include/c++/14/bits/range_access.h:
+
+/usr/include/c++/14/bits/ranges_base.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/c++/14/bits/streambuf_iterator.h:
+
+/usr/include/c++/14/bits/ranges_cmp.h:
 
 /usr/include/bits/stdio_lim.h:
 
@@ -826,6 +857,10 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/c++/14/cerrno:
 
+/usr/include/c++/14/ostream:
+
+/usr/include/c++/14/compare:
+
 /usr/include/c++/14/bits/utility.h:
 
 /usr/include/c++/14/cstdio:
@@ -870,9 +905,9 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/c++/14/math.h:
 
-/usr/include/c++/14/new:
+/usr/include/bits/wctype-wchar.h:
 
-/usr/include/linux/stddef.h:
+/usr/include/c++/14/numbers:
 
 /usr/include/c++/14/string:
 
@@ -944,8 +979,6 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 
 /usr/include/sched.h:
 
-/usr/include/sys/cdefs.h:
-
 /usr/include/sys/single_threaded.h:
 
 /usr/include/time.h:
@@ -957,15 +990,3 @@ CMakeFiles/matrix_generator.dir/matrix_generator.cu.o:
 /usr/lib/gcc/x86_64-redhat-linux/14/include/limits.h:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/common_functions.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/device_launch_parameters.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/cudacc_ext.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/sm_20_intrinsics.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_double_functions.h:
-
-/usr/include/bits/pthreadtypes-arch.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/host_defines.h:

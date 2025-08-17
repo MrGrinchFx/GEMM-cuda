@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "matrix_generator"
+			"path" : "cuda-gemm"
 		}
 	],
 	"backtrace" : 1,
@@ -24,7 +24,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 25,
+				"line" : 19,
 				"parent" : 0
 			}
 		]
@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=c++17 \"--generate-code=arch=compute_86,code=[compute_86,sm_86]\""
+					"fragment" : "-std=c++20 \"--generate-code=arch=compute_86,code=[compute_86,sm_86]\""
 				}
 			],
 			"language" : "CUDA",
@@ -45,15 +45,17 @@
 				[
 					1
 				],
-				"standard" : "17"
+				"standard" : "20"
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2
 			]
 		}
 	],
-	"id" : "matrix_generator::@6890427a1f51a3e7e1df",
+	"id" : "cuda-gemm::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -89,8 +91,8 @@
 		],
 		"language" : "CUDA"
 	},
-	"name" : "matrix_generator",
-	"nameOnDisk" : "matrix_generator",
+	"name" : "cuda-gemm",
+	"nameOnDisk" : "cuda-gemm",
 	"paths" : 
 	{
 		"build" : ".",
@@ -102,7 +104,9 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2
 			]
 		}
 	],
@@ -111,7 +115,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "matrix_generator.cu",
+			"path" : "GEMM.cu",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "GEMM_kernels.cu",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.cu",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -127,16 +127,20 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o : /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
     /usr/include/c++/14/type_traits \
     /usr/include/c++/14/bits/move.h \
     /usr/include/c++/14/bits/utility.h \
+    /usr/include/c++/14/compare \
+    /usr/include/c++/14/concepts \
     /usr/include/c++/14/bits/stl_iterator_base_types.h \
+    /usr/include/c++/14/bits/iterator_concepts.h \
+    /usr/include/c++/14/bits/ptr_traits.h \
+    /usr/include/c++/14/bits/ranges_cmp.h \
     /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
     /usr/include/c++/14/bits/concept_check.h \
     /usr/include/c++/14/debug/assertions.h \
     /usr/include/c++/14/bits/stl_iterator.h \
-    /usr/include/c++/14/bits/ptr_traits.h \
+    /usr/include/c++/14/bits/stl_construct.h \
     /usr/include/c++/14/debug/debug.h \
     /usr/include/c++/14/bits/predefined_ops.h \
     /usr/include/c++/14/bit \
-    /usr/include/c++/14/concepts \
     /usr/include/c++/14/limits \
     /usr/include/c++/14/tr1/gamma.tcc \
     /usr/include/c++/14/tr1/special_function_util.h \
@@ -189,33 +193,71 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o : /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
     /usr/include/c++/14/bits/stl_relops.h \
     /usr/include/c++/14/initializer_list \
     /home/mrgrinch/coding/GEMM-CUDA/GEMM.cuh \
-    /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh \
-    /home/mrgrinch/coding/GEMM-CUDA/utils.cuh \
-    /usr/include/c++/14/iostream \
-    /usr/include/c++/14/ostream \
-    /usr/include/c++/14/ios \
-    /usr/include/c++/14/iosfwd \
+    /usr/include/c++/14/string \
     /usr/include/c++/14/bits/stringfwd.h \
     /usr/include/c++/14/bits/memoryfwd.h \
+    /usr/include/c++/14/bits/char_traits.h \
     /usr/include/c++/14/bits/postypes.h \
     /usr/include/c++/14/cwchar \
     /usr/include/wchar.h \
     /usr/include/bits/wchar.h \
     /usr/include/bits/types/wint_t.h \
     /usr/include/bits/types/mbstate_t.h \
-    /usr/include/c++/14/exception \
-    /usr/include/c++/14/bits/exception_ptr.h \
-    /usr/include/c++/14/bits/cxxabi_init_exception.h \
-    /usr/include/c++/14/typeinfo \
-    /usr/include/c++/14/bits/hash_bytes.h \
-    /usr/include/c++/14/bits/nested_exception.h \
-    /usr/include/c++/14/bits/char_traits.h \
+    /usr/include/c++/14/bits/allocator.h \
+    /usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h \
+    /usr/include/c++/14/bits/new_allocator.h \
     /usr/include/c++/14/bits/localefwd.h \
     /usr/include/c++/14/x86_64-redhat-linux/bits/c++locale.h \
     /usr/include/c++/14/clocale \
     /usr/include/locale.h \
     /usr/include/bits/locale.h \
+    /usr/include/c++/14/iosfwd \
     /usr/include/c++/14/cctype \
+    /usr/include/c++/14/bits/ostream_insert.h \
+    /usr/include/c++/14/bits/cxxabi_forced.h \
+    /usr/include/c++/14/bits/stl_function.h \
+    /usr/include/c++/14/backward/binders.h \
+    /usr/include/c++/14/bits/refwrap.h \
+    /usr/include/c++/14/bits/invoke.h \
+    /usr/include/c++/14/bits/range_access.h \
+    /usr/include/c++/14/bits/basic_string.h \
+    /usr/include/c++/14/ext/alloc_traits.h \
+    /usr/include/c++/14/bits/alloc_traits.h \
+    /usr/include/c++/14/string_view \
+    /usr/include/c++/14/bits/functional_hash.h \
+    /usr/include/c++/14/bits/hash_bytes.h \
+    /usr/include/c++/14/bits/ranges_base.h \
+    /usr/include/c++/14/bits/max_size_type.h \
+    /usr/include/c++/14/numbers \
+    /usr/include/c++/14/bits/string_view.tcc \
+    /usr/include/c++/14/ext/string_conversions.h \
+    /usr/include/c++/14/cstdio \
+    /usr/include/c++/14/cerrno \
+    /usr/include/errno.h \
+    /usr/include/bits/errno.h \
+    /usr/include/linux/errno.h \
+    /usr/include/asm/errno.h \
+    /usr/include/asm-generic/errno.h \
+    /usr/include/asm-generic/errno-base.h \
+    /usr/include/bits/types/error_t.h \
+    /usr/include/c++/14/bits/charconv.h \
+    /usr/include/c++/14/bits/basic_string.tcc \
+    /usr/include/c++/14/bits/memory_resource.h \
+    /usr/include/c++/14/cstddef \
+    /usr/include/c++/14/bits/uses_allocator.h \
+    /usr/include/c++/14/bits/uses_allocator_args.h \
+    /usr/include/c++/14/tuple \
+    /usr/include/c++/14/bits/ranges_util.h \
+    /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/utils.cuh \
+    /usr/include/c++/14/iostream \
+    /usr/include/c++/14/ostream \
+    /usr/include/c++/14/ios \
+    /usr/include/c++/14/exception \
+    /usr/include/c++/14/bits/exception_ptr.h \
+    /usr/include/c++/14/bits/cxxabi_init_exception.h \
+    /usr/include/c++/14/typeinfo \
+    /usr/include/c++/14/bits/nested_exception.h \
     /usr/include/c++/14/bits/ios_base.h \
     /usr/include/c++/14/ext/atomicity.h \
     /usr/include/c++/14/x86_64-redhat-linux/bits/gthr.h \
@@ -242,41 +284,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o : /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
     /usr/include/c++/14/x86_64-redhat-linux/bits/atomic_word.h \
     /usr/include/sys/single_threaded.h \
     /usr/include/c++/14/bits/locale_classes.h \
-    /usr/include/c++/14/string \
-    /usr/include/c++/14/bits/allocator.h \
-    /usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h \
-    /usr/include/c++/14/bits/new_allocator.h \
-    /usr/include/c++/14/bits/ostream_insert.h \
-    /usr/include/c++/14/bits/cxxabi_forced.h \
-    /usr/include/c++/14/bits/stl_function.h \
-    /usr/include/c++/14/backward/binders.h \
-    /usr/include/c++/14/bits/refwrap.h \
-    /usr/include/c++/14/bits/invoke.h \
-    /usr/include/c++/14/bits/range_access.h \
-    /usr/include/c++/14/bits/basic_string.h \
-    /usr/include/c++/14/ext/alloc_traits.h \
-    /usr/include/c++/14/bits/alloc_traits.h \
-    /usr/include/c++/14/bits/stl_construct.h \
-    /usr/include/c++/14/string_view \
-    /usr/include/c++/14/bits/functional_hash.h \
-    /usr/include/c++/14/bits/string_view.tcc \
-    /usr/include/c++/14/ext/string_conversions.h \
-    /usr/include/c++/14/cstdio \
-    /usr/include/c++/14/cerrno \
-    /usr/include/errno.h \
-    /usr/include/bits/errno.h \
-    /usr/include/linux/errno.h \
-    /usr/include/asm/errno.h \
-    /usr/include/asm-generic/errno.h \
-    /usr/include/asm-generic/errno-base.h \
-    /usr/include/bits/types/error_t.h \
-    /usr/include/c++/14/bits/charconv.h \
-    /usr/include/c++/14/bits/basic_string.tcc \
-    /usr/include/c++/14/bits/memory_resource.h \
-    /usr/include/c++/14/cstddef \
-    /usr/include/c++/14/bits/uses_allocator.h \
-    /usr/include/c++/14/bits/uses_allocator_args.h \
-    /usr/include/c++/14/tuple \
     /usr/include/c++/14/bits/locale_classes.tcc \
     /usr/include/c++/14/system_error \
     /usr/include/c++/14/x86_64-redhat-linux/bits/error_constants.h \
@@ -296,13 +303,33 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o : /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
     /usr/include/c++/14/bits/ostream.tcc \
     /usr/include/c++/14/istream \
     /usr/include/c++/14/bits/istream.tcc \
-    /usr/include/c++/14/chrono \
-    /usr/include/c++/14/bits/chrono.h \
-    /usr/include/c++/14/ratio \
+    /usr/include/c++/14/format \
+    /usr/include/c++/14/array \
+    /usr/include/c++/14/charconv \
+    /usr/include/c++/14/locale \
+    /usr/include/c++/14/bits/locale_facets_nonio.h \
+    /usr/include/c++/14/ctime \
+    /usr/include/c++/14/x86_64-redhat-linux/bits/time_members.h \
+    /usr/include/c++/14/x86_64-redhat-linux/bits/messages_members.h \
+    /usr/include/libintl.h \
+    /usr/include/c++/14/bits/codecvt.h \
+    /usr/include/c++/14/bits/locale_facets_nonio.tcc \
+    /usr/include/c++/14/bits/locale_conv.h \
+    /usr/include/c++/14/optional \
+    /usr/include/c++/14/bits/enable_special_members.h \
+    /usr/include/c++/14/span \
+    /usr/include/c++/14/variant \
+    /usr/include/c++/14/bits/parse_numbers.h \
+    /usr/include/c++/14/bits/ranges_algobase.h \
+    /usr/include/c++/14/bits/unicode.h \
     /usr/include/c++/14/cstdint \
     /usr/lib/gcc/x86_64-redhat-linux/14/include/stdint.h \
     /usr/include/stdint.h \
     /usr/include/bits/stdint-uintn.h \
     /usr/include/bits/stdint-least.h \
-    /usr/include/c++/14/ctime \
-    /usr/include/c++/14/bits/parse_numbers.h
+    /usr/include/c++/14/bits/stl_algo.h \
+    /usr/include/c++/14/bits/algorithmfwd.h \
+    /usr/include/c++/14/bits/stl_heap.h \
+    /usr/include/c++/14/bits/uniform_int_dist.h \
+    /usr/include/c++/14/bits/stl_tempbuf.h \
+    /usr/include/c++/14/bits/unicode-data.h

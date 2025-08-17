@@ -1,7 +1,7 @@
 #include "GEMM.cuh"
 #include "GEMM_kernels.cuh"
 #include "utils.cuh"
-#include <chrono>
+#include <format>
 GEMM::~GEMM() {}
 
 void GEMM::print_matrix(const float *matrix, int row, int col) {
@@ -17,20 +17,20 @@ void GEMM::run_tests() {
   naive_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
                this->block_size);
   // print_matrix(this->c, this->M, this->N);
-  eq_check(this->c, this->ref, this->M, this->N);
-  mem_coalesce_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
-                      this->block_size);
-  eq_check(this->c, this->ref, this->M, this->N);
-  //                     this->block_size);
-  // shared_mem_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
-  //                   this->block_size);
+  eq_check(this->c, this->ref, this->M, this->N, "Naive Kernel");
+  mem_coalesce_kernel(this->a, this->b, this->c, this->M, this->N, this->K);
+  eq_check(this->c, this->ref, this->M, this->N, "Coalesced Kernel");
+  shared_mem_kernel(this->a, this->b, this->c, this->M, this->N, this->K);
+  eq_check(this->c, this->ref, this->M, this->N, "Shared Mem Kernel");
+
   // tiling_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
   //               this->block_size);
   // tiling_kernel_v2(this->a, this->b, this->c, this->M, this->N, this->K,
   //                  this->block_size);
 }
 
-void GEMM::eq_check(const float *truth, const float *test, int row, int col) {
+void GEMM::eq_check(const float *truth, const float *test, int row, int col,
+                    std::string kernelName) {
   float *d_truth;
   float *d_test;
   int *d_mismatch_flag;
@@ -56,9 +56,9 @@ void GEMM::eq_check(const float *truth, const float *test, int row, int col) {
   CUDA_CHECK(cudaGetLastError());
   CUDA_CHECK(cudaDeviceSynchronize());
   if (mismatch_flag == 1) {
-    std::cout << "THEY DO NO MATCH\n";
+    std::cout << std::format("{} is not correct\n", kernelName);
   } else {
-    std::cout << "YAYYY! they matched\n";
+    std::cout << std::format("YAYYY! {} is correct\n", kernelName);
   }
   CUDA_CHECK(cudaFree(d_mismatch_flag));
   CUDA_CHECK(cudaFree(d_truth));
@@ -81,13 +81,8 @@ void GEMM::naive_kernel(const float *a, const float *b, float *c, int M, int N,
   dim3 grid_dim{(M + block_dim.x - 1) / block_dim.x,
                 (N + block_dim.y - 1) / block_dim.y, 1};
   // each thread will be responsible for a single output cell
-  auto start = std::chrono::high_resolution_clock::now();
   naiveKernel<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
   CUDA_CHECK(cudaGetLastError());
-  auto end = std::chrono::high_resolution_clock::now();
-  const std::chrono::duration<double> duration = end - start;
-  std::cout << "Naive Kernel finished with a latency of: " << duration.count()
-            << " seconds!" << std::endl;
 
   CUDA_CHECK(cudaMemcpy(c, d_c, sizeof(float) * M * N, cudaMemcpyDeviceToHost));
 
@@ -97,7 +92,7 @@ void GEMM::naive_kernel(const float *a, const float *b, float *c, int M, int N,
 }
 
 void GEMM::mem_coalesce_kernel(const float *a, const float *b, float *c, int M,
-                               int N, int K, int block_size) {
+                               int N, int K) {
   float *d_a, *d_b, *d_c;
 
   CUDA_CHECK(cudaMalloc(&d_a, sizeof(float) * M * K));
@@ -119,8 +114,27 @@ void GEMM::mem_coalesce_kernel(const float *a, const float *b, float *c, int M,
 }
 
 void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,
-                             int N, int K, int block_size) {
-  // TODO
+                             int N, int K) {
+  float *d_a, *d_b, *d_c;
+  unsigned int tile_size = 32;
+  CUDA_CHECK(cudaMalloc(&d_a, sizeof(float) * M * K));
+  CUDA_CHECK(cudaMalloc(&d_b, sizeof(float) * N * K));
+  CUDA_CHECK(cudaMalloc(&d_c, sizeof(float) * M * N));
+
+  CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
+  dim3 block_dim{tile_size * tile_size, 1, 1};
+  dim3 grid_dim{(M + tile_size) / tile_size, (N + tile_size - 1) / tile_size,
+                1};
+
+  sharedMem<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
+  CUDA_CHECK(cudaGetLastError());
+  CUDA_CHECK(cudaMemcpy(c, d_c, sizeof(float) * M * N, cudaMemcpyDeviceToHost));
+
+  CUDA_CHECK(cudaFree(d_a));
+  CUDA_CHECK(cudaFree(d_b));
+  CUDA_CHECK(cudaFree(d_c));
 }
 
 void GEMM::tiling_kernel(const float *a, const float *b, float *c, int M, int N,
