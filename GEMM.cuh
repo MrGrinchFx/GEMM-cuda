@@ -23,10 +23,10 @@ public:
                          int K);
   // TILING
   void tiling_kernel(const float *a, const float *b, float *c, int M, int N,
-                     int K, int block_size);
+                     int K);
   // INCREASING ARITHMETIC INTENSITY IN 2D TILING
   void tiling_kernel_v2(const float *a, const float *b, float *c, int M, int N,
-                        int K, int block_size);
+                        int K);
 
 private:
   // M is A's row and N is B's Col and K is A's col as well as B's rows

@@ -60,8 +60,8 @@ void __global__ sharedMem(const float *a, const float *b, float *c, int M,
   b += xChunkIdx * tileSize;
   c += yChunkIdx * N * tileSize + xChunkIdx * tileSize;
 
-  int innerCol = threadIdx.x % tileSize;
-  int innerRow = threadIdx.x / tileSize;
+  int innerCol = threadIdx.x;
+  int innerRow = threadIdx.y;
   float temp = 0.0;
   for (int blkIdx = 0; blkIdx < K; blkIdx += tileSize) {
     // copy from main matrix to sharedMem
@@ -85,7 +85,8 @@ void __global__ sharedMem(const float *a, const float *b, float *c, int M,
   c[innerRow * N + innerCol] += temp;
 }
 
-void __global__ tiling2D(const float *a, const float *b, float *c, int size) {
+void __global__ tiling2D(const float *a, const float *b, float *c, int M, int N,
+                         int K) {
   // TODO
 }
 

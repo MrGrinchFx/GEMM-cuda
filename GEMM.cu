@@ -24,8 +24,9 @@ void GEMM::run_tests() {
   eq_check(this->c, this->ref, this->M, this->N, "Shared Mem Kernel");
 
   // tiling_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
-  //               this->block_size);
-  // tiling_kernel_v2(this->a, this->b, this->c, this->M, this->N, this->K,
+  //             this->block_size);
+  // tiling_kernel_v2(this->a, this->b, this->c, this->M, this->N,
+  // this->K,
   //                  this->block_size);
 }
 
@@ -124,7 +125,7 @@ void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,
   CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
-  dim3 block_dim{tile_size * tile_size, 1, 1};
+  dim3 block_dim{tile_size, tile_size, 1};
   dim3 grid_dim{(M + tile_size) / tile_size, (N + tile_size - 1) / tile_size,
                 1};
 
@@ -138,11 +139,30 @@ void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,
 }
 
 void GEMM::tiling_kernel(const float *a, const float *b, float *c, int M, int N,
-                         int K, int block_size) {
-  // TODO
+                         int K) {
+  float *d_a, *d_b, *d_c;
+  unsigned int tile_size = 32;
+  CUDA_CHECK(cudaMalloc(&d_a, sizeof(float) * M * K));
+  CUDA_CHECK(cudaMalloc(&d_b, sizeof(float) * N * K));
+  CUDA_CHECK(cudaMalloc(&d_c, sizeof(float) * M * N));
+
+  CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
+  dim3 block_dim{tile_size, tile_size, 1};
+  dim3 grid_dim{(M + tile_size) / tile_size, (N + tile_size - 1) / tile_size,
+                1};
+
+  tiling2D<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
+  CUDA_CHECK(cudaGetLastError());
+  CUDA_CHECK(cudaMemcpy(c, d_c, sizeof(float) * M * N, cudaMemcpyDeviceToHost));
+
+  CUDA_CHECK(cudaFree(d_a));
+  CUDA_CHECK(cudaFree(d_b));
+  CUDA_CHECK(cudaFree(d_c));
 }
 
 void GEMM::tiling_kernel_v2(const float *a, const float *b, float *c, int M,
-                            int N, int K, int block_size) {
+                            int N, int K) {
   // TODO
 }
