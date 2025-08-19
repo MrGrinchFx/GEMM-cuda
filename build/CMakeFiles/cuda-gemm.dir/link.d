@@ -3,7 +3,6 @@ cuda-gemm: \
   /usr/lib/gcc/x86_64-redhat-linux/14/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/14/crtbegin.o \
   CMakeFiles/cuda-gemm.dir/GEMM.cu.o \
-  CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o \
   CMakeFiles/cuda-gemm.dir/main.cu.o \
   /usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudadevrt.a \
   /usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudart_static.a \
@@ -44,8 +43,6 @@ cuda-gemm: \
 /usr/lib/gcc/x86_64-redhat-linux/14/crtbegin.o:
 
 CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
-
-CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o:
 
 CMakeFiles/cuda-gemm.dir/main.cu.o:
 

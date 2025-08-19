@@ -248,7 +248,13 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o : /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
     /usr/include/c++/14/bits/uses_allocator_args.h \
     /usr/include/c++/14/tuple \
     /usr/include/c++/14/bits/ranges_util.h \
-    /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/GEMM_kernels.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/coalesced_kernel.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/eq_check.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/naive_kernel.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/shared_mem_kernel.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/tensor_core_kernel.cuh \
+    /home/mrgrinch/coding/GEMM-CUDA/kernels/thread_tiling_kernel.cuh \
     /home/mrgrinch/coding/GEMM-CUDA/utils.cuh \
     /usr/include/c++/14/iostream \
     /usr/include/c++/14/ostream \

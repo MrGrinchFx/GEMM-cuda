@@ -50,8 +50,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2
+				1
 			]
 		}
 	],
@@ -105,8 +104,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2
+				1
 			]
 		}
 	],
@@ -116,12 +114,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "GEMM.cu",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "GEMM_kernels.cu",
 			"sourceGroupIndex" : 0
 		},
 		{

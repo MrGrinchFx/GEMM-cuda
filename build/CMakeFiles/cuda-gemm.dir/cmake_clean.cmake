@@ -2,8 +2,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/cuda-gemm.dir/link.d"
   "CMakeFiles/cuda-gemm.dir/GEMM.cu.o"
   "CMakeFiles/cuda-gemm.dir/GEMM.cu.o.d"
-  "CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o"
-  "CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o.d"
   "CMakeFiles/cuda-gemm.dir/main.cu.o"
   "CMakeFiles/cuda-gemm.dir/main.cu.o.d"
   "cuda-gemm"

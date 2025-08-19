@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/mrgrinch/coding/GEMM-CUDA/GEMM.cu" "CMakeFiles/cuda-gemm.dir/GEMM.cu.o" "gcc" "CMakeFiles/cuda-gemm.dir/GEMM.cu.o.d"
-  "/home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cu" "CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o" "gcc" "CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o.d"
   "/home/mrgrinch/coding/GEMM-CUDA/main.cu" "CMakeFiles/cuda-gemm.dir/main.cu.o" "gcc" "CMakeFiles/cuda-gemm.dir/main.cu.o.d"
   "" "cuda-gemm" "gcc" "CMakeFiles/cuda-gemm.dir/link.d"
   )

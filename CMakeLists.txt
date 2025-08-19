@@ -12,7 +12,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 file(GLOB_RECURSE MAIN_SOURCES
   main.cu
   GEMM.cu
-  GEMM_kernels.cu
+  /kernels/*.cu
 )
 # --- Create Main Executable Target ---
 # This executable will contain all the core application logic.

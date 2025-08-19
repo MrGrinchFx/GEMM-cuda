@@ -1,5 +1,5 @@
 #include "GEMM.cuh"
-#include "GEMM_kernels.cuh"
+#include "kernels/GEMM_kernels.cuh"
 #include "utils.cuh"
 #include <format>
 GEMM::~GEMM() {}
@@ -16,18 +16,16 @@ void GEMM::run_tests() {
   // run helper functions to launch kernels
   naive_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
                this->block_size);
-  // print_matrix(this->c, this->M, this->N);
   eq_check(this->c, this->ref, this->M, this->N, "Naive Kernel");
   mem_coalesce_kernel(this->a, this->b, this->c, this->M, this->N, this->K);
   eq_check(this->c, this->ref, this->M, this->N, "Coalesced Kernel");
   shared_mem_kernel(this->a, this->b, this->c, this->M, this->N, this->K);
   eq_check(this->c, this->ref, this->M, this->N, "Shared Mem Kernel");
 
-  // tiling_kernel(this->a, this->b, this->c, this->M, this->N, this->K,
-  //             this->block_size);
-  // tiling_kernel_v2(this->a, this->b, this->c, this->M, this->N,
-  // this->K,
-  //                  this->block_size);
+  tiling_kernel(this->a, this->b, this->c, this->M, this->N, this->K);
+  eq_check(this->c, this->ref, this->M, this->N, "Thread Tiling Kernel");
+  //  tiling_kernel_v2(this->a, this->b, this->c, this->M, this->N,
+  //  this->K);
 }
 
 void GEMM::eq_check(const float *truth, const float *test, int row, int col,
@@ -118,6 +116,7 @@ void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,
                              int N, int K) {
   float *d_a, *d_b, *d_c;
   unsigned int tile_size = 32;
+
   CUDA_CHECK(cudaMalloc(&d_a, sizeof(float) * M * K));
   CUDA_CHECK(cudaMalloc(&d_b, sizeof(float) * N * K));
   CUDA_CHECK(cudaMalloc(&d_c, sizeof(float) * M * N));
@@ -129,7 +128,7 @@ void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,
   dim3 grid_dim{(M + tile_size) / tile_size, (N + tile_size - 1) / tile_size,
                 1};
 
-  sharedMem<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
+  sharedMem<32><<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
   CUDA_CHECK(cudaGetLastError());
   CUDA_CHECK(cudaMemcpy(c, d_c, sizeof(float) * M * N, cudaMemcpyDeviceToHost));
 
@@ -141,7 +140,6 @@ void GEMM::shared_mem_kernel(const float *a, const float *b, float *c, int M,
 void GEMM::tiling_kernel(const float *a, const float *b, float *c, int M, int N,
                          int K) {
   float *d_a, *d_b, *d_c;
-  unsigned int tile_size = 32;
   CUDA_CHECK(cudaMalloc(&d_a, sizeof(float) * M * K));
   CUDA_CHECK(cudaMalloc(&d_b, sizeof(float) * N * K));
   CUDA_CHECK(cudaMalloc(&d_c, sizeof(float) * M * N));
@@ -149,11 +147,24 @@ void GEMM::tiling_kernel(const float *a, const float *b, float *c, int M, int N,
   CUDA_CHECK(cudaMemcpy(d_a, a, sizeof(float) * M * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemcpy(d_b, b, sizeof(float) * N * K, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemset(d_c, 0, sizeof(float) * M * N));
-  dim3 block_dim{tile_size, tile_size, 1};
-  dim3 grid_dim{(M + tile_size) / tile_size, (N + tile_size - 1) / tile_size,
-                1};
 
-  tiling2D<<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
+  const int block_n = 128;
+  const int block_m = 128;
+  const int block_k = 16;
+
+  const int thread_n = 8;
+  const int thread_m = 8;
+
+  // there will be a line of threads that are responsible for a small block. so
+  // we only need a 1D block of threads.
+  dim3 block_dim(16, 16, 1);
+  // grid will be made up of a grid of blocks that are responsible for a portion
+  // of C.
+
+  dim3 grid_dim{(static_cast<unsigned int>(N) + block_n - 1) / block_n,
+                (static_cast<unsigned int>(M) + block_m - 1) / block_m, 1};
+  threadTiling<block_m, block_n, block_k, thread_m, thread_n>
+      <<<grid_dim, block_dim>>>(d_a, d_b, d_c, M, N, K);
   CUDA_CHECK(cudaGetLastError());
   CUDA_CHECK(cudaMemcpy(c, d_c, sizeof(float) * M * N, cudaMemcpyDeviceToHost));
 

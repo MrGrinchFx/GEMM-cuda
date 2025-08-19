@@ -166,30 +166,6 @@ GEMM.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/GEMM.cu.s
 .PHONY : GEMM.cu.s
 
-GEMM_kernels.o: GEMM_kernels.cu.o
-.PHONY : GEMM_kernels.o
-
-# target to build an object file
-GEMM_kernels.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o
-.PHONY : GEMM_kernels.cu.o
-
-GEMM_kernels.i: GEMM_kernels.cu.i
-.PHONY : GEMM_kernels.i
-
-# target to preprocess a source file
-GEMM_kernels.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.i
-.PHONY : GEMM_kernels.cu.i
-
-GEMM_kernels.s: GEMM_kernels.cu.s
-.PHONY : GEMM_kernels.s
-
-# target to generate assembly for a file
-GEMM_kernels.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cuda-gemm.dir/build.make CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.s
-.PHONY : GEMM_kernels.cu.s
-
 main.o: main.cu.o
 .PHONY : main.o
 
@@ -251,9 +227,6 @@ help:
 	@echo "... GEMM.o"
 	@echo "... GEMM.i"
 	@echo "... GEMM.s"
-	@echo "... GEMM_kernels.o"
-	@echo "... GEMM_kernels.i"
-	@echo "... GEMM_kernels.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

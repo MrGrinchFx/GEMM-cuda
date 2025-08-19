@@ -3,7 +3,13 @@
 
 CMakeFiles/cuda-gemm.dir/GEMM.cu.o: /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
   /home/mrgrinch/coding/GEMM-CUDA/GEMM.cuh \
-  /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/GEMM_kernels.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/coalesced_kernel.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/eq_check.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/naive_kernel.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/shared_mem_kernel.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/tensor_core_kernel.cuh \
+  /home/mrgrinch/coding/GEMM-CUDA/kernels/thread_tiling_kernel.cuh \
   /home/mrgrinch/coding/GEMM-CUDA/utils.cuh \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
@@ -282,202 +288,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o: /home/mrgrinch/coding/GEMM-CUDA/GEMM.cu \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/stdarg.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/stddef.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/stdint.h \
-  /usr/lib/gcc/x86_64-redhat-linux/14/include/syslimits.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/builtin_types.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/channel_descriptor.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/common_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/cudacc_ext.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_double_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_double_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/host_config.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/host_defines.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/math_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/math_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_100_rt.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_100_rt.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_70_rt.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_70_rt.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_80_rt.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_80_rt.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_90_rt.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_90_rt.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/cuda_device_runtime_api.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/cuda_runtime.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/cuda_runtime_api.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/device_atomic_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/device_atomic_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/device_launch_parameters.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/device_types.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/driver_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/driver_types.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/library_types.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_20_atomic_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_20_atomic_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_20_intrinsics.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_20_intrinsics.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_30_intrinsics.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_30_intrinsics.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_32_atomic_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_32_atomic_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_32_intrinsics.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_32_intrinsics.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_35_atomic_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_35_intrinsics.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_60_atomic_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_60_atomic_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_61_intrinsics.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_61_intrinsics.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/surface_indirect_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/surface_types.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/texture_indirect_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/texture_types.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/vector_functions.h \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/vector_functions.hpp \
-  /usr/local/cuda-12.9/targets/x86_64-linux/include/vector_types.h
-
-CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o: /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cu \
-  /home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh \
-  /usr/include/alloca.h \
-  /usr/include/assert.h \
-  /usr/include/bits/atomic_wide_counter.h \
-  /usr/include/bits/byteswap.h \
-  /usr/include/bits/endian.h \
-  /usr/include/bits/endianness.h \
-  /usr/include/bits/floatn-common.h \
-  /usr/include/bits/floatn.h \
-  /usr/include/bits/flt-eval-method.h \
-  /usr/include/bits/fp-fast.h \
-  /usr/include/bits/fp-logb.h \
-  /usr/include/bits/iscanonical.h \
-  /usr/include/bits/libc-header-start.h \
-  /usr/include/bits/libm-simd-decl-stubs.h \
-  /usr/include/bits/local_lim.h \
-  /usr/include/bits/long-double.h \
-  /usr/include/bits/math-vector.h \
-  /usr/include/bits/mathcalls-helper-functions.h \
-  /usr/include/bits/mathcalls-macros.h \
-  /usr/include/bits/mathcalls-narrow.h \
-  /usr/include/bits/mathcalls.h \
-  /usr/include/bits/posix1_lim.h \
-  /usr/include/bits/posix2_lim.h \
-  /usr/include/bits/pthread_stack_min-dynamic.h \
-  /usr/include/bits/pthreadtypes-arch.h \
-  /usr/include/bits/pthreadtypes.h \
-  /usr/include/bits/select.h \
-  /usr/include/bits/stdint-intn.h \
-  /usr/include/bits/stdio_lim.h \
-  /usr/include/bits/stdlib-float.h \
-  /usr/include/bits/struct_mutex.h \
-  /usr/include/bits/struct_rwlock.h \
-  /usr/include/bits/thread-shared-types.h \
-  /usr/include/bits/time.h \
-  /usr/include/bits/time64.h \
-  /usr/include/bits/timesize.h \
-  /usr/include/bits/timex.h \
-  /usr/include/bits/types.h \
-  /usr/include/bits/types/FILE.h \
-  /usr/include/bits/types/__FILE.h \
-  /usr/include/bits/types/__fpos64_t.h \
-  /usr/include/bits/types/__fpos_t.h \
-  /usr/include/bits/types/__locale_t.h \
-  /usr/include/bits/types/__mbstate_t.h \
-  /usr/include/bits/types/__sigset_t.h \
-  /usr/include/bits/types/clock_t.h \
-  /usr/include/bits/types/clockid_t.h \
-  /usr/include/bits/types/cookie_io_functions_t.h \
-  /usr/include/bits/types/locale_t.h \
-  /usr/include/bits/types/sigset_t.h \
-  /usr/include/bits/types/struct_FILE.h \
-  /usr/include/bits/types/struct_itimerspec.h \
-  /usr/include/bits/types/struct_timespec.h \
-  /usr/include/bits/types/struct_timeval.h \
-  /usr/include/bits/types/struct_tm.h \
-  /usr/include/bits/types/time_t.h \
-  /usr/include/bits/types/timer_t.h \
-  /usr/include/bits/typesizes.h \
-  /usr/include/bits/uintn-identity.h \
-  /usr/include/bits/uio_lim.h \
-  /usr/include/bits/waitflags.h \
-  /usr/include/bits/waitstatus.h \
-  /usr/include/bits/wordsize.h \
-  /usr/include/bits/xopen_lim.h \
-  /usr/include/c++/14/bit \
-  /usr/include/c++/14/bits/concept_check.h \
-  /usr/include/c++/14/bits/cpp_type_traits.h \
-  /usr/include/c++/14/bits/exception.h \
-  /usr/include/c++/14/bits/exception_defines.h \
-  /usr/include/c++/14/bits/functexcept.h \
-  /usr/include/c++/14/bits/iterator_concepts.h \
-  /usr/include/c++/14/bits/move.h \
-  /usr/include/c++/14/bits/predefined_ops.h \
-  /usr/include/c++/14/bits/ptr_traits.h \
-  /usr/include/c++/14/bits/ranges_cmp.h \
-  /usr/include/c++/14/bits/requires_hosted.h \
-  /usr/include/c++/14/bits/specfun.h \
-  /usr/include/c++/14/bits/std_abs.h \
-  /usr/include/c++/14/bits/stl_algobase.h \
-  /usr/include/c++/14/bits/stl_construct.h \
-  /usr/include/c++/14/bits/stl_iterator.h \
-  /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/14/bits/stl_iterator_base_types.h \
-  /usr/include/c++/14/bits/stl_pair.h \
-  /usr/include/c++/14/bits/stl_relops.h \
-  /usr/include/c++/14/bits/utility.h \
-  /usr/include/c++/14/bits/version.h \
-  /usr/include/c++/14/cmath \
-  /usr/include/c++/14/compare \
-  /usr/include/c++/14/concepts \
-  /usr/include/c++/14/cstdlib \
-  /usr/include/c++/14/debug/assertions.h \
-  /usr/include/c++/14/debug/debug.h \
-  /usr/include/c++/14/ext/numeric_traits.h \
-  /usr/include/c++/14/ext/type_traits.h \
-  /usr/include/c++/14/initializer_list \
-  /usr/include/c++/14/limits \
-  /usr/include/c++/14/math.h \
-  /usr/include/c++/14/new \
-  /usr/include/c++/14/pstl/pstl_config.h \
-  /usr/include/c++/14/stdlib.h \
-  /usr/include/c++/14/tr1/bessel_function.tcc \
-  /usr/include/c++/14/tr1/beta_function.tcc \
-  /usr/include/c++/14/tr1/ell_integral.tcc \
-  /usr/include/c++/14/tr1/exp_integral.tcc \
-  /usr/include/c++/14/tr1/gamma.tcc \
-  /usr/include/c++/14/tr1/hypergeometric.tcc \
-  /usr/include/c++/14/tr1/legendre_function.tcc \
-  /usr/include/c++/14/tr1/modified_bessel_func.tcc \
-  /usr/include/c++/14/tr1/poly_hermite.tcc \
-  /usr/include/c++/14/tr1/poly_laguerre.tcc \
-  /usr/include/c++/14/tr1/riemann_zeta.tcc \
-  /usr/include/c++/14/tr1/special_function_util.h \
-  /usr/include/c++/14/type_traits \
-  /usr/include/c++/14/utility \
-  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
-  /usr/include/c++/14/x86_64-redhat-linux/bits/cpu_defines.h \
-  /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
-  /usr/include/ctype.h \
-  /usr/include/endian.h \
-  /usr/include/features-time64.h \
-  /usr/include/features.h \
-  /usr/include/gnu/stubs-64.h \
-  /usr/include/gnu/stubs.h \
-  /usr/include/limits.h \
-  /usr/include/linux/limits.h \
-  /usr/include/math.h \
-  /usr/include/stdc-predef.h \
-  /usr/include/stdio.h \
-  /usr/include/stdlib.h \
-  /usr/include/string.h \
-  /usr/include/strings.h \
-  /usr/include/sys/cdefs.h \
-  /usr/include/sys/select.h \
-  /usr/include/sys/types.h \
-  /usr/include/time.h \
-  /usr/lib/gcc/x86_64-redhat-linux/14/include/limits.h \
-  /usr/lib/gcc/x86_64-redhat-linux/14/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/14/include/stddef.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/syslimits.h \
   /usr/local/cuda-12.9/targets/x86_64-linux/include/builtin_types.h \
   /usr/local/cuda-12.9/targets/x86_64-linux/include/channel_descriptor.h \
@@ -895,13 +705,10 @@ cuda-gemm: /lib64/ld-linux-x86-64.so.2 \
   /usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudadevrt.a \
   /usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudart_static.a \
   CMakeFiles/cuda-gemm.dir/GEMM.cu.o \
-  CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o \
   CMakeFiles/cuda-gemm.dir/main.cu.o
 
 
 CMakeFiles/cuda-gemm.dir/main.cu.o:
-
-CMakeFiles/cuda-gemm.dir/GEMM_kernels.cu.o:
 
 CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
@@ -928,8 +735,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/c++/14/bits/fstream.tcc:
 
 /home/mrgrinch/coding/GEMM-CUDA/main.cu:
-
-/home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cu:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/vector_types.h:
 
@@ -1011,8 +816,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/lib/gcc/x86_64-redhat-linux/14/include/limits.h:
 
-/usr/include/time.h:
-
 /usr/include/sys/single_threaded.h:
 
 /usr/include/sys/select.h:
@@ -1041,6 +844,12 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/linux/types.h:
 
+/usr/include/linux/limits.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/limits.h:
+
 /usr/include/c++/14/bits/ios_base.h:
 
 /usr/include/bits/types/__locale_t.h:
@@ -1048,10 +857,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/c++/14/bits/functexcept.h:
 
 /usr/include/c++/14/bits/codecvt.h:
-
-/usr/local/cuda-12.9/targets/x86_64-linux/include/sm_61_intrinsics.h:
-
-/usr/include/c++/14/clocale:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/sm_70_rt.h:
 
@@ -1081,6 +886,10 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/bits/alloc_traits.h:
 
+/usr/include/time.h:
+
+/home/mrgrinch/coding/GEMM-CUDA/kernels/eq_check.cuh:
+
 /usr/include/bits/xopen_lim.h:
 
 /usr/include/string.h:
@@ -1100,10 +909,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/c++/14/tr1/legendre_function.tcc:
 
 /usr/include/bits/timesize.h:
-
-/usr/include/c++/14/bits/locale_classes.h:
-
-/usr/include/c++/14/bits/new_allocator.h:
 
 /usr/include/bits/types/struct_tm.h:
 
@@ -1143,14 +948,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/bits/types/clock_t.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/14/include/syslimits.h:
-
-/usr/include/c++/14/bits/concept_check.h:
-
-/usr/include/c++/14/bits/ostream.tcc:
-
-/usr/include/bits/mathcalls.h:
-
 /usr/include/bits/types/__fpos_t.h:
 
 /usr/include/c++/14/array:
@@ -1167,11 +964,9 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/bits/types.h:
 
-/usr/include/bits/floatn-common.h:
+/usr/include/bits/timex.h:
 
 /usr/include/bits/errno.h:
-
-/usr/include/bits/timex.h:
 
 /usr/include/c++/14/bits/cxxabi_init_exception.h:
 
@@ -1193,6 +988,8 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/bits/stl_tempbuf.h:
 
+/home/mrgrinch/coding/GEMM-CUDA/kernels/coalesced_kernel.cuh:
+
 /usr/local/cuda-12.9/targets/x86_64-linux/include/sm_30_intrinsics.hpp:
 
 /usr/include/bits/types/timer_t.h:
@@ -1205,11 +1002,11 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/bits/stl_heap.h:
 
-/usr/include/bits/iscanonical.h:
-
-/usr/include/c++/14/charconv:
-
 /usr/include/bits/libm-simd-decl-stubs.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/c++/14/bits/exception.h:
 
 /usr/include/bits/math-vector.h:
 
@@ -1231,29 +1028,7 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/bits/struct_mutex.h:
 
-/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.hpp:
-
-/home/mrgrinch/coding/GEMM-CUDA/GEMM.cuh:
-
-/usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h:
-
 /usr/include/bits/byteswap.h:
-
-/usr/include/asm/posix_types_64.h:
-
-/usr/include/bits/time.h:
-
-/usr/include/asm/posix_types.h:
-
-/home/mrgrinch/coding/GEMM-CUDA/GEMM_kernels.cuh:
-
-/usr/include/c++/14/bits/char_traits.h:
-
-/usr/include/c++/14/bits/hash_bytes.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/14/include/stdarg.h:
-
-/usr/include/asm-generic/errno-base.h:
 
 /usr/include/asm-generic/bitsperlong.h:
 
@@ -1261,13 +1036,13 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/asm-generic/types.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/14/include/stdarg.h:
+
+/usr/include/asm-generic/errno-base.h:
+
 /usr/include/c++/14/bits/stl_algobase.h:
 
 /usr/include/c++/14/bits/stl_iterator.h:
-
-/usr/include/asm-generic/errno.h:
-
-/usr/include/bits/long-double.h:
 
 /usr/include/c++/14/bits/enable_special_members.h:
 
@@ -1276,6 +1051,34 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/asm-generic/posix_types.h:
 
 /usr/include/c++/14/tr1/bessel_function.tcc:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/sm_61_intrinsics.h:
+
+/usr/include/c++/14/clocale:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/crt/device_functions.hpp:
+
+/home/mrgrinch/coding/GEMM-CUDA/GEMM.cuh:
+
+/usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h:
+
+/usr/include/asm/bitsperlong.h:
+
+/usr/include/bits/types/error_t.h:
+
+/usr/include/bits/types/clockid_t.h:
+
+/usr/include/bits/stdint-intn.h:
+
+/usr/include/c++/14/bits/cxxabi_forced.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/c++/14/cstdlib:
+
+/usr/local/cuda-12.9/targets/x86_64-linux/include/sm_35_intrinsics.h:
+
+/usr/include/c++/14/system_error:
 
 /usr/include/asm/types.h:
 
@@ -1287,45 +1090,55 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/bits/stdint-least.h:
 
-/usr/include/c++/14/bits/basic_string.h:
+/usr/include/c++/14/bits/basic_ios.tcc:
 
-/usr/include/c++/14/bits/locale_facets.h:
+/usr/include/c++/14/bits/charconv.h:
 
-/usr/include/c++/14/bits/streambuf.tcc:
+/usr/include/c++/14/cwchar:
 
-/usr/include/asm-generic/int-ll64.h:
+/usr/include/bits/select.h:
 
-/usr/include/c++/14/ios:
+/usr/include/c++/14/tr1/special_function_util.h:
 
-/usr/include/c++/14/bits/locale_facets_nonio.h:
+/usr/include/c++/14/stdexcept:
 
-/usr/include/bits/pthread_stack_min-dynamic.h:
+/usr/include/bits/fp-logb.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/bits/long-double.h:
+
+/usr/include/asm/posix_types_64.h:
+
+/home/mrgrinch/coding/GEMM-CUDA/kernels/shared_mem_kernel.cuh:
+
+/usr/include/c++/14/cwctype:
+
+/usr/include/bits/time.h:
+
+/usr/include/asm/posix_types.h:
+
+/usr/include/bits/thread-shared-types.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/14/include/syslimits.h:
+
+/usr/include/c++/14/bits/concept_check.h:
+
+/usr/include/c++/14/bits/ostream.tcc:
+
+/usr/include/bits/mathcalls.h:
+
+/home/mrgrinch/coding/GEMM-CUDA/kernels/thread_tiling_kernel.cuh:
+
+/usr/include/c++/14/bits/char_traits.h:
+
+/usr/include/c++/14/bits/hash_bytes.h:
+
+/usr/include/bits/floatn-common.h:
 
 /home/mrgrinch/coding/GEMM-CUDA/utils.cuh:
 
 /usr/include/bits/floatn.h:
-
-/usr/include/asm/bitsperlong.h:
-
-/usr/include/c++/14/tr1/poly_hermite.tcc:
-
-/usr/include/bits/libc-header-start.h:
-
-/usr/include/c++/14/bits/locale_conv.h:
-
-/usr/include/c++/14/iosfwd:
-
-/usr/include/bits/mathcalls-narrow.h:
-
-/usr/include/c++/14/ext/string_conversions.h:
-
-/usr/include/wctype.h:
-
-/usr/include/sched.h:
-
-/usr/include/bits/fp-fast.h:
-
-/usr/include/c++/14/debug/assertions.h:
 
 /usr/include/wchar.h:
 
@@ -1337,7 +1150,43 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/bits/parse_numbers.h:
 
+/usr/include/wctype.h:
+
+/usr/include/sched.h:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/include/c++/14/debug/assertions.h:
+
+/usr/include/c++/14/charconv:
+
+/usr/include/bits/iscanonical.h:
+
+/usr/include/c++/14/tr1/poly_hermite.tcc:
+
+/usr/include/bits/libc-header-start.h:
+
+/usr/include/bits/types/time_t.h:
+
+/usr/include/bits/mathcalls-helper-functions.h:
+
+/usr/include/c++/14/bits/basic_string.tcc:
+
+/usr/include/c++/14/bits/ranges_util.h:
+
+/usr/include/bits/mathcalls-narrow.h:
+
+/home/mrgrinch/coding/GEMM-CUDA/kernels/tensor_core_kernel.cuh:
+
+/usr/include/c++/14/ext/string_conversions.h:
+
+/home/mrgrinch/coding/GEMM-CUDA/kernels/naive_kernel.cuh:
+
 /usr/include/c++/14/bits/basic_ios.h:
+
+/usr/include/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/c++/14/bits/locale_facets_nonio.h:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/device_atomic_functions.h:
 
@@ -1349,41 +1198,21 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/x86_64-redhat-linux/bits/atomic_word.h:
 
-/usr/include/c++/14/bits/exception.h:
-
-/usr/include/gnu/stubs.h:
-
 /usr/local/cuda-12.9/targets/x86_64-linux/include/cuda_runtime.h:
 
 /usr/include/c++/14/x86_64-redhat-linux/bits/gthr-default.h:
 
 /usr/include/bits/types/cookie_io_functions_t.h:
 
+/usr/include/asm/errno.h:
+
+/usr/include/bits/stdint-uintn.h:
+
 /usr/include/assert.h:
 
 /usr/include/c++/14/bits/stl_iterator_base_funcs.h:
 
-/usr/include/c++/14/bits/basic_ios.tcc:
-
-/usr/include/c++/14/bits/charconv.h:
-
-/usr/include/c++/14/cwchar:
-
-/usr/include/c++/14/tr1/special_function_util.h:
-
-/usr/include/bits/fp-logb.h:
-
-/usr/include/c++/14/stdexcept:
-
-/usr/include/bits/select.h:
-
 /usr/include/bits/setjmp.h:
-
-/usr/include/bits/types/error_t.h:
-
-/usr/include/bits/types/clockid_t.h:
-
-/usr/include/bits/stdint-intn.h:
 
 /usr/include/bits/types/struct_timeval.h:
 
@@ -1393,31 +1222,29 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/bits/types/__FILE.h:
 
-/usr/include/bits/types/time_t.h:
+/usr/include/c++/14/bits/locale_classes.h:
 
-/usr/include/bits/mathcalls-helper-functions.h:
+/usr/include/c++/14/bits/new_allocator.h:
 
-/usr/include/c++/14/bits/basic_string.tcc:
+/usr/include/libintl.h:
 
-/usr/include/c++/14/bits/ranges_util.h:
+/usr/include/bits/endianness.h:
 
-/usr/include/bits/thread-shared-types.h:
+/usr/include/c++/14/bits/locale_classes.tcc:
 
-/usr/include/c++/14/bits/cxxabi_forced.h:
+/usr/include/c++/14/bits/locale_conv.h:
 
-/usr/include/linux/limits.h:
+/usr/include/c++/14/iosfwd:
 
-/usr/include/bits/endian.h:
+/usr/include/c++/14/bits/basic_string.h:
 
-/usr/include/c++/14/cstdlib:
+/usr/include/c++/14/bits/locale_facets.h:
 
-/usr/local/cuda-12.9/targets/x86_64-linux/include/sm_35_intrinsics.h:
+/usr/include/c++/14/bits/streambuf.tcc:
 
-/usr/include/c++/14/system_error:
+/usr/include/asm-generic/int-ll64.h:
 
-/usr/include/bits/stdint-uintn.h:
-
-/usr/include/asm/errno.h:
+/usr/include/c++/14/ios:
 
 /usr/include/c++/14/bits/ptr_traits.h:
 
@@ -1495,6 +1322,8 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/builtin_types.h:
 
+/home/mrgrinch/coding/GEMM-CUDA/kernels/GEMM_kernels.cuh:
+
 /usr/include/c++/14/bits/stringfwd.h:
 
 /usr/include/c++/14/tr1/riemann_zeta.tcc:
@@ -1527,8 +1356,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 
 /usr/include/c++/14/cstdio:
 
-/usr/include/c++/14/cwctype:
-
 /usr/include/errno.h:
 
 /usr/local/cuda-12.9/targets/x86_64-linux/include/crt/host_config.h:
@@ -1536,8 +1363,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/c++/14/ext/atomicity.h:
 
 /usr/include/c++/14/ext/type_traits.h:
-
-/usr/include/limits.h:
 
 /usr/include/bits/types/wint_t.h:
 
@@ -1566,12 +1391,6 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/sys/types.h:
 
 /usr/include/c++/14/optional:
-
-/usr/include/c++/14/bits/locale_classes.tcc:
-
-/usr/include/bits/endianness.h:
-
-/usr/include/libintl.h:
 
 /usr/include/c++/14/span:
 
@@ -1628,5 +1447,3 @@ CMakeFiles/cuda-gemm.dir/GEMM.cu.o:
 /usr/include/c++/14/x86_64-redhat-linux/bits/messages_members.h:
 
 /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h:
-
-/usr/include/linux/errno.h:
